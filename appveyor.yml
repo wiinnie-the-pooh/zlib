@@ -15,16 +15,16 @@ build_script:
 test: off
 
 after_build:
-- cmd: 7z a zlib-bin.zip %APPVEYOR_BUILD_FOLDER%\zlib*.dll
-- cmd: 7z a zlib-bin.zip %APPVEYOR_BUILD_FOLDER%\zlib*.lib
-- cmd: 7z a zlib-bin.zip %APPVEYOR_BUILD_FOLDER%\zlib*.pdb
-- cmd: 7z a zlib-bin.zip %APPVEYOR_BUILD_FOLDER%\*.h
+- cmd: 7z a zlib-%arch%-%vsver%.zip %APPVEYOR_BUILD_FOLDER%\zlib*.dll
+- cmd: 7z a zlib-%arch%-%vsver%.zip %APPVEYOR_BUILD_FOLDER%\zlib*.lib
+- cmd: 7z a zlib-%arch%-%vsver%.zip %APPVEYOR_BUILD_FOLDER%\zlib*.pdb
+- cmd: 7z a zlib-%arch%-%vsver%.zip %APPVEYOR_BUILD_FOLDER%\*.h
 
 test_script:
 - ps: >-
     .\test.ps1 -arch:$env:arch -vsver:$env:vsver
 
 artifacts:
-  - path: zlib-bin.zip
-    name: zlib-$arch-$vsver
+  - path: *.zip
+    name: zlib-bin
     type: zip
