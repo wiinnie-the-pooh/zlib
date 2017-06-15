@@ -2,6 +2,8 @@ environment:
   matrix:
   - arch: amd64
     vsver: 120
+  - arch: amd64
+    vsver: 140
 
 install:
 - ps: install-module pscx -scope CurrentUser
