@@ -25,6 +25,6 @@ test_script:
     .\test.ps1 -arch:$env:arch -vsver:$env:vsver
 
 artifacts:
-  - path: zlib-bin
+  - path: zlib-bin.zip
     name: zlib-$env:arch-$env:vsver
     type: zip
