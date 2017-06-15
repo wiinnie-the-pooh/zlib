@@ -2,7 +2,7 @@ environment:
   matrix:
   - arch: amd64
     vsver: 120
-  - arch: amd64
+  - arch: x86
     vsver: 140
 
 install:
