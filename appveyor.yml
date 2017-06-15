@@ -10,7 +10,7 @@ build: off
 
 build_script:
 - ps: >-
-    .\build.ps1 -arch:$env:arch -vsver:$env:vsver
+    .\win32\build.ps1 -arch:$env:arch -vsver:$env:vsver
 
 test: off
 
@@ -22,7 +22,7 @@ after_build:
 
 test_script:
 - ps: >-
-    .\test.ps1 -arch:$env:arch -vsver:$env:vsver
+    .\win32\test.ps1 -arch:$env:arch -vsver:$env:vsver
 
 artifacts:
   - path: '*.zip'

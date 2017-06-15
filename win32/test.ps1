@@ -8,8 +8,10 @@ Import-Module Pscx
 
 Import-VisualStudioVars -VisualStudioVersion $vsver -Architecture $arch
 
-Set-Location $PSScriptRoot
+Push-Location $PSScriptRoot\..
 
-Start-Process -Wait nmake "-f ${PSScriptRoot}\win32\Makefile.msc all"
+Start-Process -NoNewWindow -Wait nmake "-f .\win32\Makefile.msc test testdll"
 
-Pop-EnvironmentBlock # Pushed by Import-VisualStudioVars
+Pop-Location
+
+Pop-EnvironmentBlock
