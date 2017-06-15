@@ -6,11 +6,10 @@ Param(
 
 Import-Module Pscx
 
-Set-Location $PSScriptRoot
+Set-PSDebug -Trace 1
 
 Import-VisualStudioVars -VisualStudioVersion $vsver -Architecture $arch
 
-Start-Process -NoNewWindow -Wait nmake "-f win32/Makefile.msc all test testdll"
+Start-Process -NoNewWindow -Wait nmake "-f ${PSScriptRoot}\win32\Makefile.msc all test testdll"
 
-# Pushed by Import-VisualStudioVars
-Pop-EnvironmentBlock
+Pop-EnvironmentBlock # Pushed by Import-VisualStudioVars
