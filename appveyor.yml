@@ -2,10 +2,6 @@ environment:
   matrix:
   - arch: amd64
     vsver: 120
-  - arch: amd64
-    vsver: 140
-  - arch: amd64
-    vsver: 90
 
 install:
 - ps: install-module pscx -scope CurrentUser
@@ -17,3 +13,12 @@ build_script:
     .\build.ps1 -arch:$env:arch -vsver:$env:vsver
 
 test: off
+
+test_script:
+- ps: >-
+    .\test.ps1 -arch:$env:arch -vsver:$env:vsver
+
+artifacts:
+  - path: *.dll *.lib *.pdb *.h
+    name: zlib-$env:arch-$env:vsver
+    type: zip
