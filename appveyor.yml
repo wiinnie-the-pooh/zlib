@@ -27,4 +27,4 @@ artifacts:
 deploy:
   provider: NuGet
   api_key: 9r2lkjmg2sapty6ex88h0vm2
-  artifact: *.nupkg
+  artifact: /.*\.nupkg/
