@@ -2,8 +2,6 @@ environment:
   matrix:
   - arch: amd64
     vsver: 120
-  - arch: x86
-    vsver: 140
 
 install:
 - ps: install-module pscx -scope CurrentUser
@@ -11,22 +9,22 @@ install:
 build: off
 
 build_script:
-- ps: >-
-    .\win32\build.ps1 -arch:$env:arch -vsver:$env:vsver
+- ps: .\win32\build.ps1 -arch:$env:arch -vsver:$env:vsver
 
 test: off
 
-after_build:
-- cmd: 7z a zlib-%arch%-vs%vsver%.zip %APPVEYOR_BUILD_FOLDER%\zlib*.dll > nul
-- cmd: 7z a zlib-%arch%-vs%vsver%.zip %APPVEYOR_BUILD_FOLDER%\zlib*.lib > nul
-- cmd: 7z a zlib-%arch%-vs%vsver%.zip %APPVEYOR_BUILD_FOLDER%\zlib*.pdb > nul
-- cmd: 7z a zlib-%arch%-vs%vsver%.zip %APPVEYOR_BUILD_FOLDER%\*.h > nul
-
 test_script:
-- ps: >-
-    .\win32\test.ps1 -arch:$env:arch -vsver:$env:vsver
+- ps: .\win32\test.ps1 -arch:$env:arch -vsver:$env:vsver
+
+after_test:
+- ps: nuget pack .\win32\.nuspec
 
 artifacts:
-  - path: '*.zip'
-    name: bin
-    type: zip
+  - path: '*.nupkg'
+    name: nupkg
+    type: NuGetPackage
+
+deploy:
+  provider: NuGet
+  api_key: 9r2lkjmg2sapty6ex88h0vm2
+  artifact: *.nupkg
