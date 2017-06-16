@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>zlib</id>
+        <version>1.2.8.8</version>
+        <authors>Jean-loup Gailly,Mark Adler</authors>
+        <description>A Massively Spiffy Yet Delicately Unobtrusive Compression Library</description>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <copyright>Copyright 2015</copyright>
+        <tags>zlib native C++ v120 windesktop dyn rt-dyn msvcstl v140</tags>
+    </metadata>
+	<files>
+		<file src="..\zlib*.pdb" target="lib\native"/>
+		<file src="..\zlib*.dll" target="lib\native"/>
+		<file src="..\zlib*.lib" target="lib\native"/>
+		<file src="..\*.h" target="include"/>
+	</files>
+</package>
