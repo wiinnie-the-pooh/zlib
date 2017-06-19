@@ -31,7 +31,7 @@ artifacts:
 
 deploy:
   provider: NuGet
-  server:
+  server: https://ci.appveyor.com/nuget/wiinnie-the-pooh-9asji5ehdqee/api/v2/package
   api_key:
     secure: 3an8ox7VohU98W6Y/QPmq+Fr3UnpBz92xtfcDZKLuKI=
   skip_symbols: false
